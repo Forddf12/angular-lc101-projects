@@ -3,6 +3,16 @@
     <ul>
         <li *ngFor = 'let chore of chores'>{{chore}}</li>
     </ul>
+    <div>
+        <script>
+        workHarder(chores, finishedChores) {
+            if(chores.length > finishedChores.length) {
+               return "Work harder!"
+            }
+         }
+         workHarder(chores, finishedChores)
+        </script>
+    </div>
 </div>
 <hr>
 <div class="doneChores">
