@@ -1,24 +1,32 @@
-<div class="chores">
+<div class="chores" *ngIf = "chores.length < finishedChores.length; else workHarder">
     <h3>Chores</h3>
     <ul>
         <li *ngFor = 'let chore of chores'>{{chore}}</li>
-    </ul>
-    <div>
-        <script>
-        workHarder(chores, finishedChores) {
-            if(chores.length > finishedChores.length) {
-               return "Work harder!"
-            }
-         }
-         workHarder(chores, finishedChores)
-        </script>
-    </div>
+    </ul>    
 </div>
+<ng-template #workHarder>
+    <div class='chores'>
+        <p style=color:yellow>Work Harder!</p>
+        <ul>
+            <li *ngFor = 'let chore of chores'>{{chore}}</li>
+        </ul>   
+    </div>
+</ng-template>
 <hr>
-<div class="doneChores">
+<div class="doneChores" *ngIf = "chores.length !== 0 && (finishedChores.length + 3) < chores.length; else rewarded">
     <h3>Done Chores</h3>
     <ul>
         <li *ngFor = 'let done of finishedChores'>{{done}}</li>
     </ul>
+    <p>No Allowance Yet!</p>
 </div>
+<ng-template #rewarded>
+    <div class='doneChores'>
+        <ul>
+            <li *ngFor = 'let done of finishedChores'>{{done}}</li>
+        </ul>   
+        <img src="{{trophyImage}}"/>
+    </div>
+</ng-template>
+
 <hr>
